@@ -5,6 +5,7 @@ import {generateObject} from "ai";
 import {google} from "@ai-sdk/google";
 import {feedbackSchema} from "@/constants";
 
+
 export async function getInterviewsByUserId(userId: string): Promise<Interview[] | null> {
   const interviews = await db
     .collection('interviews') 
@@ -81,7 +82,9 @@ export async function createFeedback(params: CreateFeedbackParams) {
         createdAt: new Date().toISOString()
     })
 
-      return { success: true, feedbackId: newFeedback.id };
+      return { 
+        success: true, 
+        feedbackId: feedback.id };
   } catch (e) {
       console.error('Error saving feedback', e)
 

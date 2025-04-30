@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
+
 import {
     getFeedbackByInterviewId,
     getInterviewById,
@@ -19,7 +20,7 @@ const Page = async ({ params }: RouteParams) => {
 
     const feedback = await getFeedbackByInterviewId({
         interviewId: id,
-        userId: user?.id!,
+        userId: user?.id ?? "",
     })
 
 
