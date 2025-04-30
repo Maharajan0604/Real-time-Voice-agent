@@ -55,7 +55,7 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
     const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
     const onCallEnd = () => setCallStatus(CallStatus.FINISHED);
 
-    const onMessage = (message: any) => {
+    const onMessage = (message:Message) => {
       if (message.type === "transcript" && message.transcriptType === "final") {
         const newMessage: SavedMessage = { role: message.role, content: message.transcript };
         setMessages((prev) => [...prev, newMessage]);
