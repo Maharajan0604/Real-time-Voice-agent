@@ -95,7 +95,7 @@ export async function getCurrentUser(): Promise<User | null> {
   try {
     const decodedClaims = await auth.verifySessionCookie(sessionCookie, true);
 
-    // get user info from db
+    
     const userRecord = await db
       .collection("users")
       .doc(decodedClaims.uid)
@@ -111,6 +111,7 @@ export async function getCurrentUser(): Promise<User | null> {
     return null;
   }
 }
+
 export async function isAuthenticated() {
   const user = await getCurrentUser();
   return !!user;
